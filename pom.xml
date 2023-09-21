@@ -12,6 +12,7 @@
     <module>mybatis-01</module>
     <module>mybatis-02</module>
       <module>mybatis-04</module>
+      <module>mybatis-05</module>
   </modules>
 
 
@@ -32,6 +33,12 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.10</version>
     </dependency>
 
   </dependencies>
