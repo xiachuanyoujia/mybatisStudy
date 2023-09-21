@@ -11,6 +11,10 @@
         select * from mybatis.user where id = #{id}
     </select>
 
+    <select id="getUserByLimit" parameterType="map" resultType="com.kuang.pojo.User">
+        select * from mybatis.user limit #{startIndex},#{pageSize}
+    </select>
+
     <insert id="addUser" parameterType="com.kuang.pojo.User">
         insert into mybatis.user (id, name, pwd)
         VALUES (#{id}, #{name}, #{pwd});
