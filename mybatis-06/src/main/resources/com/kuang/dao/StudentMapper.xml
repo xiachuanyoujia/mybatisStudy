@@ -5,4 +5,31 @@
 <mapper namespace="com.kuang.dao.StudentMapper">
 
 
+    <select id="getStudent" resultMap="StudentTeacher">
+        select * from student;
+    </select>
+    <resultMap id="StudentTeacher" type="Student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="teacher" column="tid" javaType="Teacher" select="getTeacher"/>
+    </resultMap>
+
+    <select id="getTeacher" resultType="Teacher">
+        select * from teacher where id = #{id}
+    </select>
+    <select id="getStudent2" resultMap="StudentTeacher2">
+        select s.id sid, s.name sname, t.name tname, t.id tid
+        from student s,
+             teacher t
+        where s.tid = t.id;
+    </select>
+    <resultMap id="StudentTeacher2" type="Student">
+        <result property="id" column="id"/>
+        <result property="name" column="sname"/>
+        <association property="teacher" javaType="Teacher">
+            <result property="name" column="tname"/>
+            <result property="id" column="tid"/>
+        </association>
+    </resultMap>
+
 </mapper>
