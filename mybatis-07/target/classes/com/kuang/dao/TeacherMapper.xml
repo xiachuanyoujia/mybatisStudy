@@ -23,4 +23,8 @@
 
         </collection>
     </resultMap>
+
+    <select id="getTeacher2" resultType="com.kuang.pojo.Teacher">
+
+    </select>
 </mapper>
