@@ -46,13 +46,18 @@ public class MyTest {
         BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
 
         HashMap map = new HashMap();
-//        map.put("title", "Java如此简单");
-        map.put("author", "狂神说");
+//        map.put("title", "Java如此简单2");
+        map.put("author", "狂神说2");
+        map.put("id", "54a185ce10374d5e93d3fa497fc7507e");
+//        map.put("views", 9999);
 
-        List<Blog> blogs = mapper.queryBlogIF(map);
-        for (Blog blog : blogs ) {
-            System.out.println(blog);
-        }
+//        List<Blog> blogs = mapper.queryBlogIF(map);
+//        List<Blog> blogs = mapper.queryBlogChoose(map);
+//        for (Blog blog : blogs ) {
+//            System.out.println(blog);
+//        }
+
+        mapper.updateBlog(map);
 
         sqlSession.commit(); // 手动提交事务
 

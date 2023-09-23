@@ -10,12 +10,45 @@
     </insert>
 
     <select id="queryBlogIF" parameterType="map" resultType="com.kuang.pojo.Blog">
-        select * from mybatis.blog where 1=1
-        <if test="title != null">
-            and title = #{title}
-        </if>
-        <if test="author != null">
-            and author = #{author}
-        </if>
+        select * from mybatis.blog
+        <where>
+            <if test="title != null">
+                and title = #{title}
+            </if>
+            <if test="author != null">
+                and author = #{author}
+            </if>
+        </where>
+
     </select>
+
+    <select id="queryBlogChoose" parameterType="map" resultType="com.kuang.pojo.Blog">
+        select * from mybatis.blog
+        <where>
+            <choose>
+                <when test="title != null">
+                    title = #{title}
+                </when>
+                <when test="author != null">
+                    and author = #{author}
+                </when>
+                <otherwise>
+                    and views = #{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <update id="updateBlog">
+        update mybatis.blog
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="author != null">
+                author = #{author}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>
